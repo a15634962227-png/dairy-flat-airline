@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Booking = {
     bookingReference: string;
@@ -56,18 +56,19 @@ export default function ManagePage() {
     const [loading, setLoading] = useState(false);
     const [cancelling, setCancelling] = useState(false);
 
-    async function handleSearch(event: React.FormEvent) {
-        event.preventDefault();
-
+    async function searchBooking(targetReference: string) {
         setLoading(true);
         setMessage("");
         setBooking(null);
         setSchedule(null);
 
         try {
-            const cleanReference = reference.trim().toUpperCase();
+            const cleanReference = targetReference.trim().toUpperCase();
 
-            const response = await fetch(`/api/bookings/${cleanReference}`);
+            const response = await fetch(
+                `/api/bookings/${encodeURIComponent(cleanReference)}`
+            );
+
             const data = await response.json();
 
             if (!response.ok) {
@@ -83,6 +84,22 @@ export default function ManagePage() {
             setLoading(false);
         }
     }
+
+    async function handleSearch(event: React.FormEvent) {
+        event.preventDefault();
+        searchBooking(reference);
+    }
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const referenceFromUrl = params.get("reference");
+
+        if (referenceFromUrl) {
+            const cleanReference = referenceFromUrl.trim().toUpperCase();
+            setReference(cleanReference);
+            searchBooking(cleanReference);
+        }
+    }, []);
 
     async function handleCancel() {
         if (!booking) return;
