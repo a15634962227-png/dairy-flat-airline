@@ -325,7 +325,7 @@ export default function SchedulesPage() {
                       </div>
                     </div>
 
-                    <div className="min-w-[180px] rounded-2xl bg-white p-4 text-right shadow-sm">
+                    <div className="flex min-w-[180px] flex-col items-center justify-center rounded-2xl bg-white p-4 text-center shadow-sm">
                       <p className="text-2xl font-bold">
                         NZD ${schedule.price}
                       </p>
