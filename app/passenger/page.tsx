@@ -100,7 +100,7 @@ export default function PassengerPage() {
                 </a>
 
                 <header className="mt-4 rounded-2xl bg-white p-6 shadow-sm">
-                    <p className="text-sm font-bold uppercase tracking-wide text-blue-700">
+                    <p className="text-sm font-medium uppercase tracking-wide text-blue-700">
                         Passenger
                     </p>
 

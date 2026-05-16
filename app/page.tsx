@@ -37,7 +37,7 @@ export default function Home() {
         <header className="rounded-2xl bg-white p-8 shadow-sm">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-sm font-bold uppercase tracking-wide text-blue-700">
+              <p className="text-sm uppercase font-medium tracking-wide text-blue-700">
                 159.352 Assignment 2
               </p>
 
@@ -83,7 +83,7 @@ export default function Home() {
                 href={action.href}
                 className="rounded-2xl bg-slate-50 p-6 transition hover:-translate-y-1 hover:bg-white hover:shadow-md"
               >
-                <p className="text-sm font-bold uppercase tracking-wide text-blue-700">
+                <p className="text-sm font-medium uppercase tracking-wide text-blue-700">
                   {action.label}
                 </p>
 
